@@ -7,7 +7,7 @@
 *
 *
 *******************************************************************************
-* Copyright 2022-2024, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2022-2026, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -41,7 +41,6 @@
 
 #include "cyhal.h"
 #include "cybsp.h"
-#include "cy_retarget_io.h"
 
 
 /*******************************************************************************
@@ -79,20 +78,22 @@ static void PWM_ISR()
         if (state_off == 0)
         {
 			/* LED id ON */
-			ramp_cnt = ramp_cnt + 5;;
+			ramp_cnt = ramp_cnt + 5;
 			if (ramp_cnt >= Cy_TCPWM_PWM_GetPeriod0(PWM_HW, PWM_NUM))
 			{
 				ramp_cnt = 0; /* Reset ramp count */
 				off_cnt = Cy_TCPWM_PWM_GetCompare0Val(PWM_HW, PWM_NUM);
 				state_off = 1; /* Turn OFF led */
 			}
-			Cy_TCPWM_PWM_SetCompare0Val(PWM_HW, PWM_NUM, ramp_cnt);
-			
+			else 
+			{
+      			Cy_TCPWM_PWM_SetCompare0Val(PWM_HW, PWM_NUM, ramp_cnt);
+            }
 		}
 		else 
 		{
 		    off_cnt--;
-		    if (off_cnt < 10)
+		    if (off_cnt < 5)
 		    {
 				off_cnt = 0; /* Reset off count */
 				state_off = 0;
@@ -151,23 +152,6 @@ int main(void)
     /* Enable global interrupts */
     __enable_irq();
 
-    /* Initialize retarget-io to use the debug UART port */
-    result = cy_retarget_io_init_fc(CYBSP_DEBUG_UART_TX, CYBSP_DEBUG_UART_RX,
-            CYBSP_DEBUG_UART_CTS,CYBSP_DEBUG_UART_RTS,CY_RETARGET_IO_BAUDRATE);
-
-    /* retarget-io init failed. Stop program execution */
-    if (result != CY_RSLT_SUCCESS)
-    {
-        CY_ASSERT(0);
-    }
-
-
-    /* \x1b[2J\x1b[;H - ANSI ESC sequence for clear screen */
-    printf("\x1b[2J\x1b[;H");
-
-    printf("****************** "
-           "HAL: Hello World! Example "
-           "****************** \r\n\n");
     if (CY_TCPWM_SUCCESS != Cy_TCPWM_PWM_Init(PWM_HW, PWM_NUM, &PWM_config))
     {
         /* Handle possible errors */
@@ -176,8 +160,9 @@ int main(void)
     /* set the interrupt line for PWM_HW */
 	if (CY_SYSINT_SUCCESS != Cy_SysInt_Init(&PWM_IRQ_cfg, &PWM_ISR))
 	{
-		return -1;
+		
 	}
+	
 	/* Enable system Interrupt */
 	NVIC_EnableIRQ((IRQn_Type) PWM_IRQ_cfg.intrSrc);
     
