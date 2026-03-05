@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Red Flower Search</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+
+        #outputText {
+            margin-top: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>HTTP Client Page</h1>
+
+    <!-- Button 1 -->
+    <button onclick="searchImage()">Get Red Flower</button>
+    <h2>Toggle LED</h2>
+    <!-- Button 2 -->
+    <button onclick="showText()">Toggle LED</button>
+
+    <!-- Where the text will appear -->
+    <div id="outputText"></div>
+
+    <script>
+        function searchImage() {
+            window.open("https://www.google.com/search?tbm=isch&q=red+flower", "_blank");
+        }
+
+        function showText() {
+            document.getElementById("outputText").innerHTML = "Write an HTTPS Server code on PSOC6 AI Kit now";
+        }
+    </script>
+
+</body>
+</html>

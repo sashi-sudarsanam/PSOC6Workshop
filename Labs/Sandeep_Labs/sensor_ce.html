@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smaller Centered Image + GIF Grid</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      text-align: center;
+    }
+
+    /* Top centered image - smaller */
+    .header-image-container {
+      margin: 20px auto 30px;
+      max-width: 400px;           /* smaller top image */
+    }
+
+    .header-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* GIF grid: 3 rows × 2 columns, smaller items */
+    .gif-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;                  /* tighter spacing */
+      max-width: 700px;           /* narrower overall grid */
+      margin: 0 auto;
+    }
+
+    .gif-item {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .gif-item img {
+      width: 100%;
+      max-width: 300px;           /* cap individual GIF size */
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      margin: 10px 0;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Smaller Version</h1>
+
+  <!-- Smaller centered image at the top -->
+  <div class="header-image-container">
+    <img 
+      class="header-image"
+      src="cat.gif"
+      alt="Cute animated cat"
+    />
+  </div>
+
+  <h2>6 Smaller Animated GIFs (3 rows × 2)</h2>
+
+  <!-- 6 smaller GIFs in grid -->
+  <div class="gif-grid">
+
+    <div class="gif-item">
+      <img src="love.gif" alt="Small loading spinner">
+    </div>
+
+    <div class="gif-item">
+      <img src="love.gif" alt="Circle loading animation">
+    </div>
+
+    <div class="gif-item">
+      <img src="love.gif" alt="Simple loading icon">
+    </div>
+
+    <div class="gif-item">
+      <img src="love.gif" alt="Low-poly abstract animation">
+    </div>
+
+    <div class="gif-item">
+      <img src="love.gif" alt="Tiny moving cats">
+    </div>
+
+    <div class="gif-item">
+      <img src="https://thumbs.dreamstime.com/b/multicolored-abstract-psychedelic-picture-illustration-gif-animations-short-videos-yellow-green-magenta-red-etc-can-be-used-127524612.jpg" alt="Colorful abstract GIF">
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+Scripts For Presentation
+
+Slide - 1 and Slide 2
+
+Good Morning Folks....
+
+So its my duty to start of with the proceedings for the day. 
+
+Instead of going through through these boring slides over here, lets get started with something that we all know?
+
+How many of you have a smart watch here? Please raise your hand.  Thats great, we have got a bunch of people here.
+
+See I dont have a smart watch yet, but I want to buy  one. Can you guide me on what all features I should look at while buying a smart watch?
+
+Ok thats great... Looks like I have got a lot info from you guys, now let me make a note of all
+
+battery life - Should last atleast for a week
+display - Clear and crisp diplay
+it should be small - should not look bulky
+Internet connectivity - Say if you get some messages from GF while you are riding a bike (ignore it ride safe), but say when you are at a traffic signal
+Touch should work - If you get a call how do you accept or reject it
+Get the pulse rate - heart beat measurements
+Firmware updates  - SW update support
+stylish features like Raise to wake or Wrist Gesture
+
+Let me come to the real  business now. Now we have a business opportunity here. So if we can make a chip that can cater to all these requirements -> we will get a good business deal right?
+
+Let me map or convert all these suggestion to requirements for designing a chip, or say a chip that has these features - our PSOC6 chip
+
+Battery life - low power
+small - 40nm processor technollogy
+Internet connectivity - WiFi support
+display - it should support displays
+
+Battery life - low power - how do we achieve
+low clock frequency
+two cores - low power core and a high performance core
+
+Touch should work - We have our Capsense technology
+
+Get the pulse rate - heart beat measurements - We have some sensor that reads the pulse i.e. a Analog sensor integrated to our Chip - ADC should be supported to display on watch
+
+Software updates - Firmware updates - We should download the new sw/fw to flash and reboot the watch. The FW downloaded should be a encrypted one and it should be secure.
+
+Charging via USB - A USB port is needed
+
+We missed one stylish features that we currently have in our smart watches. 
+Raise to wake or Wrist Gesture - We have sensors to track the Wrist gesture - 6-axis IMU + magnetometer
+
+Now the PSOC6 chip can support all the above listed/ mentioned features right? Whats next?
+How do we cater to new requiremnts in the modern era? Like AI-ML, voice assistant etc.. Thats why we have our PSOC6 AI Kit - Its a PSOC6 Kit with extra AI-ML features 
+
+PSOC6 AI Kit = PSOC6 Kit +  some peripherals to perform AI-ML opeations.
+ 
+
+
+Slide 3 - PSOC6 AI Evaluation Kit  - Sensors & ML Focus of the AI Kit
+Keeping all these in my lets create a functional block diagram of PSOC6 AI Kit
+
+Slide 3.b
+So I have talked about the futeristic use of the kit or the smart watch in the AI-ML era. So we have onboard sensors for AI/ML applications.
+1. voice assistant - Hey Alexa - How do we handle this voice commands - we need a PDM Microphone
+2. Wrist gesture - 6-axis IMU BMI270 from Bosch + magnetometer BMM350 - IMU - inertial measurement unit - combines 3-axis accelerometer + 3-axis gyroscope + magnetometer BMM350 = 3-axis geomagnetic sensor
+3. Barometric Pressure Sensor - Consider you are planning for an adventure trip with the same smart watch say Climb the Everest - You need frequent alert about atmospheric pressure and temperature right? 
+So we do have solution for the same
+4. Radar Sensor - Say you are in a busy meeting, say attending this session. Now your Friends texts you "Dude lets go for a movie. Can I get you one ticket?" Now you cant text him back, everyone is watching you. What you can de? Just node yor head to sya yes. left to right head node - No up-down head node - Yes . Set this gesture pattern in your Watch and the watch will detect this gesture and reply accordingly. 
+How does watch detects this gesture? It doesnot have camera right? so what can we do? we have Radar - BGT60TR13C radar (with its L-shaped antenna array) senses micro-movements and Doppler shifts from your head relative to the watch on your wrist - cheap, works in any weather / lighting but short range 10-30cm range
+
+Slide 4 - Let me take a rest. Please explain me this slide.
+
+Slide 5 - Why Use the PSOCTM 6 AI Kit?
+Why should I explain this now to you? You know answer to this better than me now? Right?
+
+Thats all from My end.... We will soon catch up during our Hands on Session... Letr me know if there are any more questions for me?
+
+
+
+Doubts 
+Slide - 1 
+1. Hardware crypto - dedicated Crypto block inside the PSoC 6 MCU i.e. Haredware and not in SW. It supports AES/DES/TDES, Hashing SHA-26, CRC etc..
+   secure boot - Secure Boot ensures that only authentic, untampered firmware runs on the device. The CM0+ core typically runs first (secure boot manager), verifies the CM4 application, and then starts it.
+   For AI Kit - protects your deployed ML models and firmware from tampering
+   
+   TRNG True Random Number Generator - hardware-based true random number source inside the Crypto block - TRNG uses physical entropy sources (e.g., thermal noise, ring oscillators) to generate unpredictable, high-quality random bits. - Compliant with standards for cryptographic use. Typical use case - Generating session keys for encryption
+   
+   Where all can we use our PSOC6 AI kit apart from just smart watch? 
+   Car Dashboard
+   Smart Glasses
+   Smart induction cook
+   Smart lights/ Smart plugs / home automation nodes
+   Smart coffee maker
+   smart door locks/ Video door bells
+   
+   
+   
+   Data collection  - collect real-time sensor data directly from physical environment using psoc6 ai kIt and DEEPCRAFT™ Studio.
+   Labelling - label the incoming real-time data streams interactively (e.g., tag audio clips as "siren", "cough", or motion gestures as "wave", "tap")
+   Training - Use DEEPCRAFT™ Studio to preprocess data and train the neural network.
+   Deployment - Generate optimized C code or binary from DEEPCRAFT™ Studio, Import into ModusToolbox™, integrate via ML Configurator or code examples,Build, program the kit
+   
+   
