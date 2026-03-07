@@ -31,9 +31,10 @@
 ### Modify the code as below:
 |# | File| Line Number | Change needs to be made |
 | :--- | :--- | :--- |:--- |
-| 1| motion_task.h  | 73 | INTERFACE_USED =  CY8CKIT_062S2_AI |
+| 1| motion_task.h  | 73 | INTERFACE_USED   CY8CKIT_062S2_AI |
 
 5. Now see what the Tera term displays the same that you just said. WoooooW... The job of your brain is done by the PSOC6 micro controller, making use of the sensors available.
+
 
 
 
